@@ -1,0 +1,14 @@
+{
+  "name": "cargointro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "reveal server --theme white --markdown cargo.md"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vivaxy/reveal": "^2.2.0"
+  }
+}

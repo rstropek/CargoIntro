@@ -141,10 +141,17 @@ How to specify dependencies
 
 ---
 
-## Sample
+## [Referencing *crates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/10-crates-deps/Cargo.toml)
 
-```toml
+```toml [7-10]
+[package]
+name = "crates_deps"
+version = "0.1.0"
+authors = ["Rainer Stropek <rainer@software-architects.at>"]
+edition = "2018"
+
 [dependencies]
-regex = "1"
-lazy_static = "1"
+rand = "0.7"
+num_cpus = "1.0"
+num-format = "0.4"
 ```

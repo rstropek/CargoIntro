@@ -10,6 +10,7 @@ You will practice in this lab:
 * Various Rust language fundamentals
 * Basic input (*STDIN*) and output (*STDOUT*)
 * Basics about Regular Expressions in Rust
+* Debugging Rust
 
 ## The Requirements
 

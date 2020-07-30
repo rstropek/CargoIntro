@@ -6,13 +6,13 @@ Rainer Stropek | @rstropek | Coding Club Linz
 
 ----
 
-# 5 Minute Jumpstart
+# 10 Minutes Jumpstart
 
-For Beginners
+For Rust Beginners ([read more...](https://doc.rust-lang.org/cargo/guide/index.html))
 
 ---
 
-## Purpose
+## Purpose of *Cargo*
 
 * Dependency <!-- .element: class="fragment" --> management
 * Invoke <!-- .element: class="fragment" --> Rust compiler
@@ -28,6 +28,24 @@ cargo build --release
 ./target/release/hello_world
 ```
 <!-- .element: class="fragment" -->
+
+---
+
+## [Project File Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html)
+
+```txt
+.
+├── Cargo.lock
+├── Cargo.toml
+├── src/ 
+│     Source code
+├── benches/
+│     Benchmarks
+├── examples/
+│     Example code
+└── tests/ (integration tests)
+      Integration tests
+```
 
 ---
 
@@ -50,6 +68,17 @@ edition = "2018" # Rust edition (default is 2015, current is 2018)
 # No dependencies yet, will follow in a minute
 ```
 <!-- .element: class="fragment" -->
+
+---
+
+## *Cargo.lock*
+
+* Similar <!-- .element: class="fragment" --> to npm's *package-lock.json*
+* Maintained <!-- .element: class="fragment" --> by Cargo, you write *Cargo.toml*
+* Should <!-- .element: class="fragment" --> you check in *Cargo.lock*?
+  * End products: **Yes** (to ensure consistent builds)
+  * Libraries: **No**
+  * [Read more...](https://doc.rust-lang.org/cargo/faq.html#why-do-binaries-have-cargolock-in-version-control-but-not-libraries)
 
 ---
 
@@ -107,21 +136,15 @@ fn is_proper_date(text: &str) -> bool {
 
 ---
 
-## [Project File Layout](https://doc.rust-lang.org/cargo/guide/project-layout.html)
+## Hands-on Lab
 
-```txt
-.
-├── Cargo.lock
-├── Cargo.toml
-├── src/ 
-│     Source code
-├── benches/
-│     Benchmarks
-├── examples/
-│     Example code
-└── tests/ (integration tests)
-      Integration tests
-```
+> [RegEx Date Checker](https://github.com/rstropek/CargoIntro/tree/master/samples/01-intro)
+
+* *Cargo* basics (creating a Rust binary program, compiling, running)
+* Various Rust language fundamentals
+* Basic input (*STDIN*) and output (*STDOUT*)
+* Basics about Regular Expressions in Rust
+* Debugging Rust
 
 ----
 
@@ -180,6 +203,17 @@ Version [references based on SemVer](https://doc.rust-lang.org/cargo/reference/s
 
 ---
 
+## Hands-on Lab
+
+> [PI Monte Carlo With *creates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/10-crates-deps)
+
+* Working with *crates.io* dependencies
+* Various Rust language fundamentals
+* Basics about working with threads
+* Basics about generating random numbers
+
+---
+
 ## [Path Dependencies](https://github.com/rstropek/CargoIntro/tree/master/samples/11-crates-deps-folder/Cargo.toml)
 
 ```toml [4,7]
@@ -205,6 +239,17 @@ mth_calc = { path = "mth_calc" }
 
 ---
 
+## Hands-on Lab
+
+> [PI Monte Carlo With Library and Path Dependency](https://github.com/rstropek/CargoIntro/tree/master/samples/11-crates-deps-folder)
+
+* Working with *path dependencies*
+* Various Rust language fundamentals
+* Basics about creating Rust libraries
+* Basics about unit testing
+
+---
+
 ## [Git Dependencies](https://github.com/rstropek/CargoIntro/tree/master/samples/12-crates-deps-git/Cargo.toml)
 
 Depend on a library located in a git repository
@@ -218,6 +263,14 @@ rand = "0.7"
 num-format = "0.4"
 mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 ```
+
+---
+
+## Hands-on Lab
+
+> [PI Monte Carlo With Library and Git Dependency](https://github.com/rstropek/CargoIntro/tree/master/samples/12-crates-deps-git)
+
+* Working with *Git dependencies*
 
 ---
 

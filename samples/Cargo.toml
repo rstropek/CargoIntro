@@ -2,5 +2,6 @@
 members = [
     "01-intro",
     "10-crates-deps",
-    "11-crates-deps-lib"
+    "11-crates-deps-folder",
+    "12-crates-deps-git"
 ]

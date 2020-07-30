@@ -1,5 +1,5 @@
 [package]
-name = "crates_deps_lib"
+name = "crates_deps_git"
 version = "0.1.0"
 authors = ["Rainer Stropek <rainer@software-architects.at>"]
 edition = "2018"
@@ -7,4 +7,4 @@ edition = "2018"
 [dependencies]
 rand = "0.7"
 num-format = "0.4"
-mth_calc = { path = "mth_calc" }
+mth_calc = { git = "https://github.com/rstropek/mth-calc" }

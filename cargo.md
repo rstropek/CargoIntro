@@ -43,7 +43,7 @@ cargo build --release
 [package]
 name = "hello_world"
 version = "0.1.0"
-authors = ["Rainer Stropek <rainer@software-architects.at>"]
+authors = ["Rainer Stropek"]
 edition = "2018" # Rust edition (default is 2015, current is 2018)
 
 [dependencies]
@@ -127,11 +127,10 @@ fn is_proper_date(text: &str) -> bool {
 
 # Dependencies
 
-How to specify dependencies
+How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html))
 
 ---
 
-## Sources
 | Source                          | Description |
 | ------------------------------- | ----------- |
 | Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry) (e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
@@ -143,15 +142,93 @@ How to specify dependencies
 
 ## [Referencing *crates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/10-crates-deps/Cargo.toml)
 
-```toml [7-10]
+```toml [4-7]
 [package]
-name = "crates_deps"
-version = "0.1.0"
-authors = ["Rainer Stropek <rainer@software-architects.at>"]
-edition = "2018"
+...
 
 [dependencies]
 rand = "0.7"
 num_cpus = "1.0"
 num-format = "0.4"
 ```
+
+---
+
+## Referencing *crates.io*
+
+* Website: <!-- .element: class="fragment" --> [crates.io](https://crates.io/)
+  * Example: [`rand`](https://crates.io/crates/rand)
+* Guidelines <!-- .element: class="fragment" --> for [publishing crates](https://doc.rust-lang.org/cargo/reference/publishing.html)
+  * Sample will follow later
+* Dependency <!-- .element: class="fragment" --> types:
+  * `dependencies`
+  * `dev-dependencies`
+    * Only used for compiling tests, examples, and benchmarks
+  * `build-dependencies`
+    * Dependencies for build scripts (also written in Rust)
+
+---
+
+## Referencing *crates.io*
+
+Version [references based on SemVer](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) similar to npm's *package.json*
+
+* Caret <!-- .element: class="fragment" --> requirements: E.g. `^1.2.3` 🡆 `>=1.2.3, <2.0.0`
+* Tilde <!-- .element: class="fragment" --> requirements: E.g. `~1.2.3` 🡆 `>=1.2.3, <1.3.0`
+* Wildcard <!-- .element: class="fragment" --> requirements: E.g. `1.*` 🡆 `>=1.0.0, <2.0.0`
+* Comparison <!-- .element: class="fragment" --> requirements: E.g. `>= 1.2.0`
+
+---
+
+## [Path Dependencies](https://github.com/rstropek/CargoIntro/tree/master/samples/11-crates-deps-folder/Cargo.toml)
+
+```toml [4,7]
+[package]
+...
+
+[dependencies]
+rand = "0.7"
+num-format = "0.4"
+mth_calc = { path = "mth_calc" }
+```
+
+```txt
+.
+├── Cargo.toml ───────┐
+├── src/              │
+│     Source code     │
+└── mth_calc/   <─────┘
+    ├── src/
+    │   └── lib.rs
+    └── Cargo.toml
+```
+
+---
+
+## [Git Dependencies](https://github.com/rstropek/CargoIntro/tree/master/samples/12-crates-deps-git/Cargo.toml)
+
+Depend on a library located in a git repository
+
+```toml [4,7]
+[package]
+...
+
+[dependencies]
+rand = "0.7"
+num-format = "0.4"
+mth_calc = { git = "https://github.com/rstropek/mth-calc" }
+```
+
+---
+
+## Advanced Dependency Topics
+
+* Multiple <!-- .element: class="fragment" --> locations
+  * Specify both a registry version **and** a *git* or *path* location
+  * `mth_calc = { path = "mth_calc", version = "0.1" }`
+  * Use case: Lib splitted up into multiple packages within workspace
+    * Locally: Use paths
+    * When published: Use *crates.io* versions
+* Overrides <!-- .element: class="fragment" -->
+  * Work with a crate before it has been published
+  * [More details...](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html)

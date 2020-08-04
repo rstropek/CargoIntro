@@ -2,6 +2,8 @@
 
 ## The Rust Package Manager
 
+![Rust Linz](https://rust-linz.at/img/rust-linz-logo.svg)
+
 Rainer Stropek | @rstropek | Coding Club Linz
 
 ----
@@ -17,17 +19,32 @@ For Rust Beginners ([read more...](https://doc.rust-lang.org/cargo/guide/index.h
 * Dependency <!-- .element: class="fragment" --> management
 * Invoke <!-- .element: class="fragment" --> Rust compiler
 
-```bash
+```bash [1|3-6|7,9]
 cargo new hello_world --bin # --bin for program, --lib for library
 
 cd hello_world/
-cargo build
+cargo build # implicitly uses profile `dev`
 ./target/debug/hello_world
 
+# Compile with `release` profile
+# More about profiles at https://doc.rust-lang.org/cargo/reference/profiles.html
 cargo build --release
 ./target/release/hello_world
 ```
 <!-- .element: class="fragment" -->
+
+---
+
+## Important Cargo Command to Get Started
+
+| Command                                                                       | Description                                                |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [`cargo new`](https://doc.rust-lang.org/cargo/commands/cargo-new.html)        | Create a new Cargo package                                 |
+| [`cargo search`](https://doc.rust-lang.org/cargo/commands/cargo-search.html)  | Search packages in *crates.io*                             |
+| [`cargo tree`](https://doc.rust-lang.org/cargo/commands/cargo-tree.html)      | Display a tree visualization of a dependency graph         |
+| [`cargo build`](https://doc.rust-lang.org/cargo/commands/cargo-build.html)    | Compile the current package                                |
+| [`cargo run`](https://doc.rust-lang.org/cargo/commands/cargo-run.html)        | Run the current package                                    |
+| [`cargo fetch`](https://doc.rust-lang.org/cargo/commands/cargo-fetch.html)    | Fetch dependencies from network (prepare for offline work) |
 
 ---
 
@@ -136,6 +153,16 @@ fn is_proper_date(text: &str) -> bool {
 
 ---
 
+## [Workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html)
+
+* Collection <!-- .element: class="fragment" --> of one or more packages
+  * share dependency resolution (shared *Cargo.lock*)
+  * common output directory
+  * shared settings (e.g. profiles)
+* Example: <!-- .element: class="fragment" --> Workspace for samples for this presentation ([GitHub](https://github.com/rstropek/CargoIntro/blob/master/samples/Cargo.toml))
+
+---
+
 ## Hands-on Lab
 
 > [RegEx Date Checker](https://github.com/rstropek/CargoIntro/tree/master/samples/01-intro)
@@ -154,12 +181,24 @@ How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/referen
 
 ---
 
+## Dependency Sources
+
 | Source                          | Description |
 | ------------------------------- | ----------- |
-| Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry) (e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
+| Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry)<br>(e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
 | `git`                           | Pull git repo and look for crate there |
 | `path`                          | Look for create in local folder |
 | Mulitple sources                | Combine registry version and `git` or `path` |
+
+---
+
+## Dependency Types
+
+| *Cargo.toml* section | Description                                                 |
+| -------------------- | ----------------------------------------------------------- |
+| `dependencies`       | Regular dependency of your package                          |
+| `dev-dependencies`   | Only used for compiling tests,<br>examples, and benchmarks  |
+| `build-dependencies` | Dependencies for build scripts<br>(also written in Rust)    |
 
 ---
 
@@ -183,23 +222,11 @@ num-format = "0.4"
   * Example: [`rand`](https://crates.io/crates/rand)
 * Guidelines <!-- .element: class="fragment" --> for [publishing crates](https://doc.rust-lang.org/cargo/reference/publishing.html)
   * Sample will follow later
-* Dependency <!-- .element: class="fragment" --> types:
-  * `dependencies`
-  * `dev-dependencies`
-    * Only used for compiling tests, examples, and benchmarks
-  * `build-dependencies`
-    * Dependencies for build scripts (also written in Rust)
-
----
-
-## Referencing *crates.io*
-
-Version [references based on SemVer](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) similar to npm's *package.json*
-
-* Caret <!-- .element: class="fragment" --> requirements: E.g. `^1.2.3` 🡆 `>=1.2.3, <2.0.0`
-* Tilde <!-- .element: class="fragment" --> requirements: E.g. `~1.2.3` 🡆 `>=1.2.3, <1.3.0`
-* Wildcard <!-- .element: class="fragment" --> requirements: E.g. `1.*` 🡆 `>=1.0.0, <2.0.0`
-* Comparison <!-- .element: class="fragment" --> requirements: E.g. `>= 1.2.0`
+* Version  <!-- .element: class="fragment" --> [references based on SemVer](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) similar to npm's *package.json*
+  * Caret <!-- .element: class="fragment" --> requirements: E.g. `^1.2.3` 🡆 `>=1.2.3, <2.0.0`
+  * Tilde <!-- .element: class="fragment" --> requirements: E.g. `~1.2.3` 🡆 `>=1.2.3, <1.3.0`
+  * Wildcard <!-- .element: class="fragment" --> requirements: E.g. `1.*` 🡆 `>=1.0.0, <2.0.0`
+  * Comparison <!-- .element: class="fragment" --> requirements: E.g. `>= 1.2.0`
 
 ---
 
@@ -276,6 +303,7 @@ mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 
 ## Advanced Dependency Topics
 
+* Not <!-- .element: class="fragment" --> covered in detail here
 * Multiple <!-- .element: class="fragment" --> locations
   * Specify both a registry version **and** a *git* or *path* location
   * `mth_calc = { path = "mth_calc", version = "0.1" }`
@@ -283,5 +311,104 @@ mth_calc = { git = "https://github.com/rstropek/mth-calc" }
     * Locally: Use paths
     * When published: Use *crates.io* versions
 * Overrides <!-- .element: class="fragment" -->
-  * Work with a crate before it has been published
-  * [More details...](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html)
+  * Work with a crate before it has been published ([docs](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html))
+* Platform-specific <!-- .element: class="fragment" --> dependencies
+  * E.g. `[target.'cfg(windows)'.dependencies]` ([docs](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies))
+
+---
+
+## Advanced Dependency Topics (Continued)
+
+* Features: <!-- .element: class="fragment" --> Optional dependencies ([docs](https://doc.rust-lang.org/cargo/reference/features.html))
+  * Enhance a package, but are not required
+* Build <!-- .element: class="fragment" --> scripts ([docs](https://doc.rust-lang.org/cargo/reference/build-scripts.html))
+  * Use cases e.g. build C libraries, generate Rust code, set platform-specif config settings, etc.
+  * *build.rs* in the root of a package 🡆 compiled and executed before building the package
+
+----
+
+# Publishing Crates
+
+How to publish crates ([read more](https://doc.rust-lang.org/cargo/reference/publishing.html))
+
+---
+
+## Important Cargo Command for Publishing
+
+| Command                                                                         | Description                                                    |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [`cargo login`](https://doc.rust-lang.org/cargo/commands/cargo-login.html)      | Save an API token from the registry (e.g. *crates.io*) locally |
+| [`cargo package`](https://doc.rust-lang.org/cargo/commands/cargo-package.html)  | Assemble the local package into a distributable tarball        |
+| [`cargo publish `](https://doc.rust-lang.org/cargo/commands/cargo-publish.html) | Upload a package to the registry                               |
+
+---
+
+## Checklist
+
+* Get <!-- .element: class="fragment" --> API token from *crates.io* ([details](https://doc.rust-lang.org/cargo/reference/publishing.html#before-your-first-publish))
+  * Run `cargo login <your_token>` with it
+* Put <!-- .element: class="fragment" --> meaningful metadata into your *Cargo.toml*
+  * Add *README.md*
+* Add <!-- .element: class="fragment" --> unit tests, integration tests, and benchmarks
+* Document <!-- .element: class="fragment" --> API ([docs](https://doc.rust-lang.org/stable/rust-by-example/meta/doc.html))
+  * Include examples
+
+```bash [1,2|4,5|7,8]
+cargo publish --dry-run
+# Check package in target/package
+
+# Verify proper content of package (avoid unnecessary files)
+cargo package --list
+
+# Upload to crates.io
+cargo publish
+```
+<!-- .element: class="fragment" -->
+
+---
+
+## Hands-on Lab
+
+> [Publish PI Monte Carlo libary to *crates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/30-crate)
+
+* Add documentation to your package
+  * Including example code
+* Publish create to *crates.io*
+* See result [on *crates.io*](https://crates.io/crates/mth_calc) and [*docs.rs*](https://docs.rs/mth_calc/0.1.1/mth_calc/)
+
+---
+
+## Hands-on Lab
+
+```bash [1-3|5-6|8-9]
+# Build documentation
+cargo doc
+# Inspect docs in *target/doc*
+
+# Run tests
+cargo test
+
+# Test samples in docs
+cargo test --doc
+```
+
+----
+
+# Summary
+
+* Cargo <!-- .element: class="fragment" --> is an indispensible for Rust development
+* Many <!-- .element: class="fragment" --> similarities with *npm*
+* Unexpected <!-- .element: class="fragment" --> features for me as someone who is new to Rust
+  * Documentation <!-- .element: class="fragment" --> features
+  * Great <!-- .element: class="fragment" --> support for examples (in docs, in *examples* folder)
+  * Benchmarking <!-- .element: class="fragment" --> built-in
+* Room <!-- .element: class="fragment" --> for improvement
+  * Make it easier to get a custom package repository
+
+----
+
+# Thank You for Attending
+
+![Rust Linz](https://rust-linz.at/img/rust-linz-logo.svg)
+
+Rainer Stropek | @rstropek | Coding Club Linz

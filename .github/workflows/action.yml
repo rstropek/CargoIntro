@@ -17,3 +17,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: rstropek/cargo-intro-slides
         tags: latest
+
+    - name: Trigger Azure App Service refresh
+      uses: joelwmale/webhook-action@master
+      env:
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        data: "Refresh"

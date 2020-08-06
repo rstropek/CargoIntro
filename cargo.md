@@ -123,7 +123,8 @@ edition = "2018" # Rust edition (default is 2015, current is 2018)
 
 # Dependencies
 
-How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html))
+How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html))<br>
+*Crate* = German *Kiste, Holzverschlag*
 
 ---
 
@@ -160,6 +161,15 @@ num_cpus = "1.0"
 num-format = "0.4"
 ```
 
+```txt
+[dependencies]
+rand = "0.7"
+ ^       ^
+ │       └── Version selector
+ └── Crate name
+```
+<!-- .element: class="fragment" -->
+
 ---
 
 ## Referencing *crates.io*
@@ -173,6 +183,16 @@ num-format = "0.4"
   * Tilde <!-- .element: class="fragment" --> requirements: E.g. `~1.2.3` 🡆 `>=1.2.3, <1.3.0`
   * Wildcard <!-- .element: class="fragment" --> requirements: E.g. `1.*` 🡆 `>=1.0.0, <2.0.0`
   * Comparison <!-- .element: class="fragment" --> requirements: E.g. `>= 1.2.0`
+
+---
+
+### *crates.io* Behind the Scenes
+
+* [Package index on GitHub](https://github.com/rust-lang/crates.io-index)
+  * Example [*mth_calc*](https://github.com/rust-lang/crates.io-index/blob/master/mt/h_/mth_calc) (sample from this session)
+* RESTful Web API
+  * [https://crates.io/api/v1/crates](https://crates.io/api/v1/crates)
+  * Example: [Query for *mth_calc*](https://crates.io/api/v1/crates?page=1&per_page=10&q=mth_)
 
 ---
 
@@ -249,7 +269,8 @@ mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 
 ## Advanced Dependency Topics
 
-* Not <!-- .element: class="fragment" --> covered in detail here
+Not covered in detail here
+
 * Multiple <!-- .element: class="fragment" --> locations
   * Specify both a registry version **and** a *git* or *path* location
   * `mth_calc = { path = "mth_calc", version = "0.1" }`

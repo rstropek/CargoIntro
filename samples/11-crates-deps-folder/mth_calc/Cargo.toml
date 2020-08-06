@@ -5,4 +5,4 @@ authors = ["Rainer Stropek <rainer@software-architects.at>"]
 edition = "2018"
 
 [dependencies]
-num_cpus = "1.0"
+num_cpus = "1"

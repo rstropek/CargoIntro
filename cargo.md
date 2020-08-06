@@ -74,7 +74,7 @@ cargo build --release
 * Built <!-- .element: class="fragment" --> on [Semantic Versioning](https://semver.org/)
 * Package  <!-- .element: class="fragment" --> metadata (more about the [Manifest format](https://doc.rust-lang.org/cargo/reference/manifest.html)):
 
-```toml
+```toml [1-5|7-8]
 [package]
 name = "hello_world"
 version = "0.1.0"
@@ -99,57 +99,15 @@ edition = "2018" # Rust edition (default is 2015, current is 2018)
 
 ---
 
-## [Sample](https://github.com/rstropek/CargoIntro/tree/master/samples/01-intro)
+## Hands-on Lab
 
-```toml
-[dependencies]
-regex = "1"
-lazy_static = "1"
-```
+> [RegEx Date Checker](https://github.com/rstropek/CargoIntro/tree/master/samples/01-intro)
 
-```rust
-use std::io;
-
-// We can now start using our dependencies in code
-use lazy_static::lazy_static;
-use regex::Regex;
-
-fn main() {
-    println!("Type 'quit' to exit.");
-
-    let mut input = String::new();
-    loop {
-        // Let user enter some text and remove trailing \n
-        io::stdin().read_line(&mut input).unwrap();
-        input.truncate(input.len() - 1);
-
-        // Say goodbye if user want to quite
-        if input == "quit" {
-            println!("Good bye");
-            break;
-        }
-
-        // Check if input is a date and print answer
-        let is_date = is_proper_date(&input);
-        println!("{0} is{1}a date", input, if is_date { " " } else { " not " });
-
-        // Clearn input buffer and start all over
-        input.clear();
-    }
-}
-
-/// Indicates whether a given text contains a properly formated date string.
-/// The recognized date format is YYYY-MM-DD.
-fn is_proper_date(text: &str) -> bool {
-    // It makes no sense to recompile regex every time we run the function.
-    // So lets use a lazy evalulated static instead.
-    lazy_static! {
-        static ref RE: Regex = Regex::new("^(\\d{4})-(\\d{2})-(\\d{2})$").unwrap();
-    }
-    
-    RE.is_match(text)
-}
-```
+* *Cargo* basics (creating a Rust binary program, compiling, running)
+* Various Rust language fundamentals
+* Basic input (*STDIN*) and output (*STDOUT*)
+* Basics about Regular Expressions in Rust
+* Debugging Rust
 
 ---
 
@@ -160,18 +118,6 @@ fn is_proper_date(text: &str) -> bool {
   * common output directory
   * shared settings (e.g. profiles)
 * Example: <!-- .element: class="fragment" --> Workspace for samples for this presentation ([GitHub](https://github.com/rstropek/CargoIntro/blob/master/samples/Cargo.toml))
-
----
-
-## Hands-on Lab
-
-> [RegEx Date Checker](https://github.com/rstropek/CargoIntro/tree/master/samples/01-intro)
-
-* *Cargo* basics (creating a Rust binary program, compiling, running)
-* Various Rust language fundamentals
-* Basic input (*STDIN*) and output (*STDOUT*)
-* Basics about Regular Expressions in Rust
-* Debugging Rust
 
 ----
 

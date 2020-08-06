@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node
 COPY . /slides/
 WORKDIR /slides
 RUN npm install

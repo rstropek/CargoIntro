@@ -6,9 +6,21 @@
 
 Rainer Stropek | @rstropek | Coding Club Linz
 
+---
+
+## Material
+
+* [MIT licensed](LICENSE)
+  * Use it, share it, build on it
+* [Slides in Markdown](cargo.md)
+* [Samples](samples) with hands-on lab descriptions
+  * Use it for your own practicing
+  * Use it in hackathons, trainings, etc.
+* Contributions are welcome
+
 ----
 
-# 10 Minutes Jumpstart
+# Jumpstart
 
 For Rust Beginners ([read more...](https://doc.rust-lang.org/cargo/guide/index.html))
 

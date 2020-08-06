@@ -1,13 +1,13 @@
 {
   "name": "cargointro",
   "version": "1.0.0",
-  "description": "",
+  "description": "Slides and samples for *Cargo Introduction* session",
   "main": "index.js",
   "scripts": {
     "start": "reveal server --theme white --markdown cargo.md"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Rainer Stropek",
+  "license": "MIT",
   "dependencies": {
     "@vivaxy/reveal": "^2.2.1"
   }

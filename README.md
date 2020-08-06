@@ -1,5 +1,7 @@
 # Cargo Introduction
 
+![Deploy slides to Docker Hub](https://github.com/rstropek/CargoIntro/workflows/Deploy%20slides%20to%20Docker%20Hub/badge.svg)
+
 ## Project Content
 
 This repository contains slides and samples for my *Cargo Introduction* session. It was originally created for a talk at the [Rust Linz meetup](https://www.meetup.com/de-DE/Rust-Linz/events/271857182/) on Aug. 6th 2020.

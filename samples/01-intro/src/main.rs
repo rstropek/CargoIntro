@@ -1,3 +1,4 @@
+// Rust Standard Library. `std` is available to all Rust crates by default.
 use std::io;
 
 // We can now start using our dependencies in code

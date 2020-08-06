@@ -16,9 +16,7 @@ The slides are [available online](https://cargo-intro-slides.azurewebsites.net/)
 * `npm install`
 * `npm start`
 
-You can also package the slides in a Docker image. A [Dockerfile](Dockerfile) is part of this repository.
-
-If you prefer Docker, simply pull the image [*rstropek/cargo-intro-slides*](https://hub.docker.com/repository/docker/rstropek/cargo-intro-slides) and run it. Slides are available on port 80 (see [*Dockerfile*](Dockerfile)).
+You can also package the slides in a Docker image. A [Dockerfile](Dockerfile) is part of this repository. If you prefer a ready-made image, simply pull [*rstropek/cargo-intro-slides*](https://hub.docker.com/repository/docker/rstropek/cargo-intro-slides) and run it. Slides are available on port 80 (for details see [*Dockerfile*](Dockerfile)).
 
 ## Samples
 

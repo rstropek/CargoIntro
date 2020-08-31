@@ -147,7 +147,7 @@ How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/referen
 | Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry)<br>(e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
 | `git`                           | Pull git repo and look for crate there |
 | `path`                          | Look for create in local folder |
-| Mulitple sources                | Combine registry version and `git` or `path` |
+| Multiple sources                | Combine registry version and `git` or `path` |
 
 ---
 

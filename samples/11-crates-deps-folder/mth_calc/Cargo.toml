@@ -1,8 +1,0 @@
-[package]
-name = "mth_calc"
-version = "0.1.0"
-authors = ["Rainer Stropek <rainer@software-architects.at>"]
-edition = "2018"
-
-[dependencies]
-num_cpus = "1"

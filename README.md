@@ -1,6 +1,6 @@
 # Cargo Introduction
 
-![Deploy slides to Docker Hub](https://github.com/rstropek/CargoIntro/workflows/Deploy%20slides%20to%20Docker%20Hub/badge.svg)
+[![Deploy slides to Github Pages](https://github.com/rstropek/CargoIntro/actions/workflows/action.yml/badge.svg)](https://github.com/rstropek/CargoIntro/actions/workflows/action.yml)
 
 ## Project Content
 
@@ -8,15 +8,13 @@ This repository contains slides and samples for my *Cargo Introduction* session.
 
 ## Slides
 
-The slides are based on Markdown and [revealjs](https://revealjs.com/). To simplify handling, this project uses [this revealjs CLI](https://github.com/vivaxy/node-reveal).
+The slides are based on Markdown and [revealjs](https://revealjs.com/).
 
-The slides are [available online](https://cargo-intro-slides.azurewebsites.net/). If you want to run the slides locally, perform the following steps:
+The slides are [available online](https://rstropek.github.io/CargoIntro/). If you want to run the slides locally, perform the following steps:
 
 * Clone this repository
 * `npm install`
 * `npm start`
-
-You can also package the slides in a Docker image. A [Dockerfile](Dockerfile) is part of this repository. If you prefer a ready-made image, simply pull [*rstropek/cargo-intro-slides*](https://hub.docker.com/repository/docker/rstropek/cargo-intro-slides) and run it. Slides are available on port 80 (for details see [*Dockerfile*](Dockerfile)).
 
 ## Samples
 

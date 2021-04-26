@@ -1,0 +1,26 @@
+@import '../node_modules/reveal.js/dist/reveal.css';
+@import '../node_modules/reveal.js/dist/theme/white.css';
+@import '../node_modules/reveal.js/plugin/highlight/monokai.css';
+
+.reveal section p {
+    font-weight: bold !important;
+    font-size: 0.8em !important;
+}
+
+.reveal section h1 {
+    font-weight: bold !important;
+    font-size: 1.5em !important;
+}
+
+.reveal section h2 {
+    font-weight: bold !important;
+    font-size: 1.3em !important;
+}
+
+.reveal section li {
+    font-size: 0.8em !important;
+}
+
+.reveal section td {
+    font-size: 0.6em !important;
+}

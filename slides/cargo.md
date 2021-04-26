@@ -47,7 +47,7 @@ cargo build --release
 
 ---
 
-## Important Cargo Command to Get Started
+## Important Cargo Commands
 
 | Command                                                                       | Description                                                |
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------- |

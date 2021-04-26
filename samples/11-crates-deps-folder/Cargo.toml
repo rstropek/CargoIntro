@@ -5,6 +5,6 @@ authors = ["Rainer Stropek <rainer@software-architects.at>"]
 edition = "2018"
 
 [dependencies]
-rand = "0.7"
+rand = "0.8"
 num-format = "0.4"
 mth_calc = { path = "mth_calc" }

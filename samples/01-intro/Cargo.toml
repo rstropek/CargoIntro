@@ -5,5 +5,15 @@ authors = ["Rainer Stropek <rainer@software-architects.at>"]
 edition = "2018"
 
 [dependencies]
+# You can influence the feature set that you need from a crate.
+# The first dependency version for `regex` references all the default features.
+# With that, all regex features are available and the create is optimized for performance.
+# If you are parsing small strings and you need a limited set of regex features,
+# you can disable default features and selectively include the features you need.
+# Try all three dependency versions and read more about `regex`'s features
+# at https://docs.rs/regex/1.4.6/regex/#crate-features.
+# Note that the second dependency version will lead to a panic when running the app.
 regex = "1"
+# regex = { version = "1", default-features = false, features = [ "std" ]}
+# regex = { version = "1", default-features = false, features = [ "std", "unicode-perl" ]}
 lazy_static = "1"

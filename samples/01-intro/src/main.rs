@@ -1,4 +1,6 @@
 // Rust Standard Library. `std` is available to all Rust crates by default.
+// Rust can work without the standard library (e.g. for embedded programming).
+// Read more about that at https://docs.rust-embedded.org/book/intro/no-std.html
 use std::io;
 
 // We can now start using our dependencies in code

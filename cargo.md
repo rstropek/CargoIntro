@@ -168,17 +168,60 @@ How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/referen
 ...
 
 [dependencies]
-rand = "0.7"
+rand = "0.8"
 num_cpus = "1.0"
 num-format = "0.4"
 ```
 
 ```txt
 [dependencies]
-rand = "0.7"
+rand = "0.8"
  ^       ^
  │       └── Version selector
  └── Crate name
+```
+<!-- .element: class="fragment" -->
+
+---
+
+## Features
+
+Optional dependencies
+
+```toml [5|6]
+[package]
+...
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+regex = { version = "1", default-features = false, features = [ "std", "unicode-perl" ]}
+```
+
+---
+
+## Features
+
+Conditional compilation
+
+```toml [2,3|6]
+[features]
+default = ["console_error_panic_hook", "console_log", "wee_alloc"]
+console_log = ["web-sys"]
+
+[dependencies]
+web-sys = { version = "0.3.50", features = ["console"], optional = true }
+```
+
+```rs [1-2|6,7]
+#[cfg(feature = "console_log")]
+use web_sys::console;
+
+pub fn do_something() {
+  ...
+  #[cfg(feature = "console_log")]
+  console::log_1(&"Hello World".into());
+  ...
+}
 ```
 <!-- .element: class="fragment" -->
 
@@ -226,7 +269,7 @@ rand = "0.7"
 ...
 
 [dependencies]
-rand = "0.7"
+rand = "0.8"
 num-format = "0.4"
 mth_calc = { path = "mth_calc" }
 ```
@@ -264,7 +307,7 @@ Depend on a library located in a git repository
 ...
 
 [dependencies]
-rand = "0.7"
+rand = "0.8"
 num-format = "0.4"
 mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 ```

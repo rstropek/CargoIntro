@@ -144,7 +144,7 @@ How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/referen
 
 | Source                          | Description |
 | ------------------------------- | ----------- |
-| Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry)<br>(e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [Meuse](https://www.meuse.mcorbin.fr/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
+| Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry)<br>(Git repo + web API, e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [Meuse](https://www.meuse.mcorbin.fr/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
 | `git`                           | Pull git repo and look for crate there |
 | `path`                          | Look for create in local folder |
 | Multiple sources                | Combine registry version and `git` or `path` |
@@ -184,9 +184,24 @@ rand = "0.8"
 
 ---
 
-## Features
+## Referencing *crates.io*
 
-Optional dependencies
+* Website: <!-- .element: class="fragment" --> [crates.io](https://crates.io/)
+  * Example: [`rand`](https://crates.io/crates/rand)
+* Guidelines <!-- .element: class="fragment" --> for [publishing crates](https://doc.rust-lang.org/cargo/reference/publishing.html)
+  * Sample will follow later
+* Version  <!-- .element: class="fragment" --> [references based on SemVer](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) similar to npm's *package.json*
+  * Caret <!-- .element: class="fragment" --> requirements: E.g. `^1.2.3` 🡆 `>=1.2.3, <2.0.0`
+  * Tilde <!-- .element: class="fragment" --> requirements: E.g. `~1.2.3` 🡆 `>=1.2.3, <1.3.0`
+  * Wildcard <!-- .element: class="fragment" --> requirements: E.g. `1.*` 🡆 `>=1.0.0, <2.0.0`
+  * Comparison <!-- .element: class="fragment" --> requirements: E.g. `>= 1.2.0`
+  * Caret <!-- .element: class="fragment" --> is default: E.g. `1` 🡆 `>=1.0.0, <2.0.0`
+
+---
+
+## Features (1/2)
+
+Optional dependencies (e.g. [`num-format`](https://crates.io/crates/num-format#extra-features), [`serde`](https://serde.rs/feature-flags.html), [`regex`](https://docs.rs/regex/1.4.6/regex/#crate-features))
 
 ```toml [5|6]
 [package]
@@ -199,7 +214,7 @@ regex = { version = "1", default-features = false, features = [ "std", "unicode-
 
 ---
 
-## Features
+## Features (2/2)
 
 Conditional compilation
 
@@ -224,20 +239,6 @@ pub fn do_something() {
 }
 ```
 <!-- .element: class="fragment" -->
-
----
-
-## Referencing *crates.io*
-
-* Website: <!-- .element: class="fragment" --> [crates.io](https://crates.io/)
-  * Example: [`rand`](https://crates.io/crates/rand)
-* Guidelines <!-- .element: class="fragment" --> for [publishing crates](https://doc.rust-lang.org/cargo/reference/publishing.html)
-  * Sample will follow later
-* Version  <!-- .element: class="fragment" --> [references based on SemVer](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) similar to npm's *package.json*
-  * Caret <!-- .element: class="fragment" --> requirements: E.g. `^1.2.3` 🡆 `>=1.2.3, <2.0.0`
-  * Tilde <!-- .element: class="fragment" --> requirements: E.g. `~1.2.3` 🡆 `>=1.2.3, <1.3.0`
-  * Wildcard <!-- .element: class="fragment" --> requirements: E.g. `1.*` 🡆 `>=1.0.0, <2.0.0`
-  * Comparison <!-- .element: class="fragment" --> requirements: E.g. `>= 1.2.0`
 
 ---
 

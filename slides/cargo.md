@@ -199,49 +199,6 @@ rand = "0.8"
 
 ---
 
-## Features (1/2)
-
-Optional dependencies (e.g. [`num-format`](https://crates.io/crates/num-format#extra-features), [`serde`](https://serde.rs/feature-flags.html), [`regex`](https://docs.rs/regex/1.4.6/regex/#crate-features))
-
-```toml [5|6]
-[package]
-...
-
-[dependencies]
-serde = { version = "1.0", features = ["derive"] }
-regex = { version = "1", default-features = false, features = [ "std", "unicode-perl" ]}
-```
-
----
-
-## Features (2/2)
-
-Conditional compilation
-
-```toml [2,3|6]
-[features]
-default = ["console_error_panic_hook", "console_log", "wee_alloc"]
-console_log = ["web-sys"]
-
-[dependencies]
-web-sys = { version = "0.3.50", features = ["console"], optional = true }
-```
-
-```rs [1-2|6,7]
-#[cfg(feature = "console_log")]
-use web_sys::console;
-
-pub fn do_something() {
-  ...
-  #[cfg(feature = "console_log")]
-  console::log_1(&"Hello World".into());
-  ...
-}
-```
-<!-- .element: class="fragment" -->
-
----
-
 ### *crates.io* Behind the Scenes
 
 * [Package index on GitHub](https://github.com/rust-lang/crates.io-index)
@@ -301,7 +258,8 @@ mth_calc = { path = "mth_calc" }
 
 ## [Git Dependencies](https://github.com/rstropek/CargoIntro/tree/master/samples/12-crates-deps-git/Cargo.toml)
 
-Depend on a library located in a git repository
+* Depend on a library located in a git repository
+* You <!-- .element: class="fragment" --> can use `rev`, `tag`, or `branch` to specify exact source location
 
 ```toml [4,7]
 [package]
@@ -312,6 +270,7 @@ rand = "0.8"
 num-format = "0.4"
 mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 ```
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -320,6 +279,49 @@ mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 > [PI Monte Carlo With Library and Git Dependency](https://github.com/rstropek/CargoIntro/tree/master/samples/12-crates-deps-git)
 
 * Working with *Git dependencies*
+
+---
+
+## Features (1/2)
+
+Optional dependencies (e.g. [`num-format`](https://crates.io/crates/num-format#extra-features), [`serde`](https://serde.rs/feature-flags.html), [`regex`](https://docs.rs/regex/1.4.6/regex/#crate-features))
+
+```toml [5|6]
+[package]
+...
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+regex = { version = "1", default-features = false, features = [ "std", "unicode-perl" ]}
+```
+
+---
+
+## Features (2/2)
+
+Conditional compilation
+
+```toml [2,3|6]
+[features]
+default = ["console_error_panic_hook", "console_log", "wee_alloc"]
+console_log = ["web-sys"]
+
+[dependencies]
+web-sys = { version = "0.3.50", features = ["console"], optional = true }
+```
+
+```rs [1-2|6,7]
+#[cfg(feature = "console_log")]
+use web_sys::console;
+
+pub fn do_something() {
+  ...
+  #[cfg(feature = "console_log")]
+  console::log_1(&"Hello World".into());
+  ...
+}
+```
+<!-- .element: class="fragment" -->
 
 ---
 
@@ -342,8 +344,6 @@ Not covered in detail here
 
 ## Advanced Dependency Topics (Continued)
 
-* Features: <!-- .element: class="fragment" --> Optional dependencies ([docs](https://doc.rust-lang.org/cargo/reference/features.html))
-  * Enhance a package, but are not required
 * Build <!-- .element: class="fragment" --> scripts ([docs](https://doc.rust-lang.org/cargo/reference/build-scripts.html))
   * Use cases e.g. build C libraries, generate Rust code, set platform-specif config settings, etc.
   * *build.rs* in the root of a package 🡆 compiled and executed before building the package

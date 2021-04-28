@@ -4,7 +4,7 @@
 
 ## Project Content
 
-This repository contains slides and samples for my *Cargo Introduction* session. It was originally created for a talk at the [Rust Linz meetup](https://www.meetup.com/de-DE/Rust-Linz/events/271857182/) on Aug. 6th 2020.
+This repository contains slides and samples for my *Cargo Introduction* session. It was originally created for a talk at the [Rust Linz meetup](https://www.meetup.com/de-DE/Rust-Linz/events/271857182/) on Aug. 6th 2020. For the [*Rust Day* of *enwickler.kiosk*](https://kiosk.entwickler.de/rust-day/), I updated the slides and samples.
 
 ## Slides
 

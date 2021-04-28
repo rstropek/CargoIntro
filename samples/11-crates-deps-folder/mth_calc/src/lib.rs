@@ -25,8 +25,6 @@ mod tests {
     #[test]
     fn it_calculates_result_correctly() {
         let result = run_on_all_cpus(|| { 1 }, 0, |a, b| { a + b });
-        if result.0 < 1 || result.1 < 1 || result.0 / result.1 != 1 {
-            panic!();
-        }
+        assert!(result.0 >= 1 && result.1 >= 1 && result.0 / result.1 == 1, "Unexpected result");
     }
 }

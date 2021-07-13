@@ -10,10 +10,10 @@ Rainer Stropek | @rstropek | Coding Club Linz
 
 ## Material
 
-* [MIT licensed](LICENSE)
+* [MIT licensed](https://github.com/rstropek/CargoIntro/blob/master/LICENSE)
   * Use it, share it, build on it
-* [Slides in Markdown](cargo.md)
-* [Samples](samples) with hands-on lab descriptions
+* [Slides in Markdown](https://github.com/rstropek/CargoIntro/blob/master/slides/cargo.md)
+* [Samples](https://github.com/rstropek/CargoIntro/tree/master/samples) with hands-on lab descriptions
   * Use it for your own practicing
   * Use it in hackathons, trainings, etc.
 * Contributions are welcome

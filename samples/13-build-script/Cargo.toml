@@ -1,0 +1,9 @@
+[package]
+name = "build-script"
+version = "0.1.0"
+edition = "2018"
+
+[workspace]
+
+[build-dependencies]
+cc = "1.0"

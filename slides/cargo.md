@@ -91,7 +91,7 @@ cargo build --release
 name = "hello_world"
 version = "0.1.0"
 authors = ["Rainer Stropek"]
-edition = "2018" # Rust edition (default is 2015, current is 2018)
+edition = "2018" # Rust edition (current is 2018, will change to 2021 in November 2021)
 
 [dependencies]
 # No dependencies yet, will follow in a minute
@@ -144,7 +144,7 @@ How to specify dependencies ([read more](https://doc.rust-lang.org/cargo/referen
 
 | Source                          | Description |
 | ------------------------------- | ----------- |
-| Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry)<br>(Git repo + web API, e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [Meuse](https://www.meuse.mcorbin.fr/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry)) |
+| Version                         | [crates.io](https://crates.io/) or [custom registry](https://doc.rust-lang.org/cargo/reference/registries.html#using-an-alternate-registry)<br>(Git repo + web API, e.g. [Cloudsmith](https://cloudsmith.com/blog/worlds-first-private-cargo-registry-w-cloudsmith-rust/), [Meuse](https://www.meuse.mcorbin.fr/), [GitHub](https://doc.rust-lang.org/cargo/reference/registries.html#running-a-registry), [Alexandrie](https://hirevo.github.io/alexandrie/); see also [alternative registries RFC](https://github.com/rust-lang/rfcs/blob/master/text/2141-alternative-registries.md)) |
 | `git`                           | Pull git repo and look for crate there |
 | `path`                          | Look for create in local folder |
 | Multiple sources                | Combine registry version and `git` or `path` |
@@ -325,6 +325,25 @@ pub fn do_something() {
 
 ---
 
+## Build Scripts
+
+* Build <!-- .element: class="fragment" --> scripts ([docs](https://doc.rust-lang.org/cargo/reference/build-scripts.html))
+* Sample <!-- .element: class="fragment" --> use cases
+  * Build required C libraries
+  * Generate Rust code
+  * Set platform-specif config settings
+* Add <!-- .element: class="fragment" --> file *build.rs* in the root of a package 🡆 compiled and executed before building the package
+
+---
+
+## Hands-on Lab
+
+> [Rust Build Script](https://github.com/rstropek/CargoIntro/tree/master/samples/13-build-script)
+
+* Working with *Rust Build Scripts*
+
+---
+
 ## Advanced Dependency Topics
 
 Not covered in detail here
@@ -339,14 +358,6 @@ Not covered in detail here
   * Work with a crate before it has been published ([docs](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html))
 * Platform-specific <!-- .element: class="fragment" --> dependencies
   * E.g. `[target.'cfg(windows)'.dependencies]` ([docs](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies))
-
----
-
-## Advanced Dependency Topics (Continued)
-
-* Build <!-- .element: class="fragment" --> scripts ([docs](https://doc.rust-lang.org/cargo/reference/build-scripts.html))
-  * Use cases e.g. build C libraries, generate Rust code, set platform-specif config settings, etc.
-  * *build.rs* in the root of a package 🡆 compiled and executed before building the package
 
 ----
 

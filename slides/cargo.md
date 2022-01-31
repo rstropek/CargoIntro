@@ -91,7 +91,7 @@ cargo build --release
 name = "hello_world"
 version = "0.1.0"
 authors = ["Rainer Stropek"]
-edition = "2018" # Rust edition (current is 2018, will change to 2021 in November 2021)
+edition = "2021"
 
 [dependencies]
 # No dependencies yet, will follow in a minute

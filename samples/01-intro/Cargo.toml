@@ -2,7 +2,7 @@
 name = "intro"
 version = "0.1.0"
 authors = ["Rainer Stropek <rainer@software-architects.at>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 # You can influence the feature set that you need from a crate.

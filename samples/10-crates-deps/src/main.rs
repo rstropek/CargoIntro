@@ -10,7 +10,7 @@ use num_format::{Locale, ToFormattedString};
 
 fn main() {
     // Number of iterations per thread
-    const ITERATIONS: u32 = 1000000;
+    const ITERATIONS: u32 = 1_000_000;
 
     // Start stopwatch
     let now = Instant::now();

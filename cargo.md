@@ -129,6 +129,7 @@ edition = "2021"
   * share dependency resolution (shared *Cargo.lock*)
   * common output directory
   * shared settings (e.g. profiles)
+* Dependencies <!-- .element: class="fragment" --> can be [inherited](https://doc.rust-lang.org/cargo/reference/workspaces.html#the-dependencies-table) from workspace to members
 * Example: <!-- .element: class="fragment" --> Workspace for samples for this presentation ([GitHub](https://github.com/rstropek/CargoIntro/blob/master/samples/Cargo.toml))
 
 ----

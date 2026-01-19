@@ -2,7 +2,7 @@
 name = "intro"
 version = "0.1.0"
 authors = ["Rainer Stropek <rainer@software-architects.at>"]
-edition = "2021"
+edition = "2024"
 
 [dependencies]
 # You can influence the feature set that you need from a crate.
@@ -13,7 +13,7 @@ edition = "2021"
 # Try all three dependency versions and read more about `regex`'s features
 # at https://docs.rs/regex/1.4.6/regex/#crate-features.
 # Note that the second dependency version will lead to a panic when running the app.
-regex = "~1.5.0"
+regex = "~1.12.2"
 # regex = { version = "1", default-features = false, features = [ "std" ]}
 # regex = { version = "1", default-features = false, features = [ "std", "unicode-perl" ]}
 lazy_static = "1"

@@ -2,9 +2,9 @@
 name = "crates_deps"
 version = "0.1.0"
 authors = ["Rainer Stropek <rainer@software-architects.at>"]
-edition = "2021"
+edition = "2024"
 
 [dependencies]
-rand = "0.8"
+rand = "0.9"
 num_cpus = "^1.0"
 num-format = "0.4"

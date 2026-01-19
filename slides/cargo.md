@@ -212,7 +212,7 @@ rand = "0.8"
 
 ## Hands-on Lab
 
-> [PI Monte Carlo With *creates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/10-crates-deps)
+> [PI Monte Carlo With *crates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/10-crates-deps)
 
 * Working with *crates.io* dependencies
 * Various Rust language fundamentals
@@ -285,7 +285,7 @@ mth_calc = { git = "https://github.com/rstropek/mth-calc" }
 
 ## Features (1/2)
 
-Optional dependencies (e.g. [`num-format`](https://crates.io/crates/num-format#extra-features), [`serde`](https://serde.rs/feature-flags.html), [`regex`](https://docs.rs/regex/1.4.6/regex/#crate-features))
+Optional dependencies (e.g. [`num-format`](https://crates.io/crates/num-format#extra-features), [`serde`](https://serde.rs/feature-flags.html), [`regex`](https://docs.rs/regex/latest/regex/#crate-features))
 
 ```toml [5|6]
 [package]
@@ -304,11 +304,11 @@ Conditional compilation
 
 ```toml [2,3|6]
 [features]
-default = ["console_error_panic_hook", "console_log", "wee_alloc"]
+default = ["console_error_panic_hook", "console_log"]
 console_log = ["web-sys"]
 
 [dependencies]
-web-sys = { version = "0.3.50", features = ["console"], optional = true }
+web-sys = { version = "0.3", features = ["console"], optional = true }
 ```
 
 ```rs [1-2|6,7]
@@ -404,11 +404,11 @@ cargo publish
 
 ## Hands-on Lab
 
-> [Publish PI Monte Carlo libary to *crates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/30-crate)
+> [Publish PI Monte Carlo library to *crates.io*](https://github.com/rstropek/CargoIntro/tree/master/samples/30-crate)
 
 * Add documentation to your package
   * Including example code
-* Publish create to *crates.io*
+* Publish crate to *crates.io*
 * See result [on *crates.io*](https://crates.io/crates/mth_calc) and [*docs.rs*](https://docs.rs/mth_calc/0.1.1/mth_calc/)
 
 ---

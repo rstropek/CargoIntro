@@ -1,4 +1,4 @@
-extern { fn calculateNumberOfSolutions(boardSize: i32) -> i32; }
+unsafe extern "C" { fn calculateNumberOfSolutions(boardSize: i32) -> i32; }
 
 fn main() {
     let solutions: i32;
